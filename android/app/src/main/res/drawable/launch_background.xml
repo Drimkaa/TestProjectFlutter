@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Цвет фона -->
+    <item android:drawable="#ffffff"/>  <!-- зелёный цвет -->
+
+    <!-- Логотип -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/iteco" /> <!-- имя вашего PNG без расширения -->
+    </item>
+</layer-list>
