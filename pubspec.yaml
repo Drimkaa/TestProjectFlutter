@@ -40,6 +40,7 @@ dependencies:
   animated_text_kit: ^4.3.0
   dio: ^5.9.0
   font_awesome_flutter: ^10.9.1
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
@@ -94,3 +95,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/iteco.png
+  android: true
+  ios: true

@@ -26,7 +26,7 @@ void main() {
 
   final dio = Dio();
   final productService = ProductService(dio);
-  final productRepository = ProductRepository(productService);
+  final productRepository = ProductRepository(productService); 
   final getProducts = GetProducts(productRepository);
   runApp(
     MultiProvider(

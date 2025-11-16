@@ -29,7 +29,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if (!mounted) return;
 
-    // Simple routing logic - acceptable in view
     final destination = viewModel.shouldShowOnboarding
         ? const OnboardingScreen()
         : const HomeScreen();
@@ -46,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const JumpingIcon(),           // Вот анимированный человечек
+            const JumpingIcon(),
             const SizedBox(height: 24),
           ],
         ),
@@ -62,7 +61,8 @@ class JumpingIcon extends StatefulWidget {
   State<JumpingIcon> createState() => _JumpingIconState();
 }
 
-class _JumpingIconState extends State<JumpingIcon> with SingleTickerProviderStateMixin {
+class _JumpingIconState extends State<JumpingIcon>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _jumpAnimation;
 
@@ -73,6 +73,7 @@ class _JumpingIconState extends State<JumpingIcon> with SingleTickerProviderStat
       duration: const Duration(milliseconds: 700),
       vsync: this,
     )..repeat(reverse: true);
+
     _jumpAnimation = Tween<double>(begin: 0, end: -40).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
@@ -94,8 +95,12 @@ class _JumpingIconState extends State<JumpingIcon> with SingleTickerProviderStat
           child: child,
         );
       },
-      // Можно заменить на FaIcon(FontAwesomeIcons.person) или любую другую
-      child: FlutterLogo(size: 100,)
+      child: Image.asset(
+        'assets/iteco.png',
+        width: 100,
+        height: 100,
+        fit: BoxFit.contain,
+      ),
     );
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../../onboarding/domain/use_cases/check_onboarding_completion.dart';
 
-/// View model manages UI state for SplashScreen
-/// Contains logic that converts app data into UI State
 class SplashViewModel extends ChangeNotifier {
   final CheckOnboardingCompletion _checkOnboardingCompletion;
 
@@ -14,9 +12,8 @@ class SplashViewModel extends ChangeNotifier {
 
   SplashViewModel(this._checkOnboardingCompletion);
 
-  /// Command: Initialize splash screen logic
   Future<void> initialize() async {
-    await Future.delayed(const Duration(seconds: 2)); // Simulate splash delay
+    await Future.delayed(const Duration(seconds: 2));
 
     final hasCompleted = await _checkOnboardingCompletion();
     _shouldShowOnboarding = !hasCompleted;

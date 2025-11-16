@@ -11,7 +11,6 @@ class OnboardingViewModel extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  // Domain data
   final List<OnboardingPageContent> pages = [
     const OnboardingPageContent(
       title: 'Привет!',
@@ -34,13 +33,11 @@ class OnboardingViewModel extends ChangeNotifier {
   int get totalPages => pages.length;
   bool get isLastPage => _currentPage == totalPages - 1;
   bool get isFirstPage => _currentPage == 0;
-  /// Command: Update current page
   void setPage(int page) {
     _currentPage = page;
     notifyListeners();
   }
 
-  /// Command: Complete onboarding process
   Future<void> finishOnboarding() async {
     _isLoading = true;
     notifyListeners();

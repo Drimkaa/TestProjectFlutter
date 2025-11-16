@@ -1,16 +1,43 @@
-# test_project
+# Тестовое приложение
+![Splash screen](assets/screens/screen0.png)
+![Onboarding screen](assets/screens/screen1.png)
+![Главная страница](assets/screens/screen2.png)
 
-A new Flutter project.
+## Установка и запуск проекта
 
-## Getting Started
+### Предварительные требования
 
-This project is a starting point for a Flutter application.
+- Установлен Flutter SDK (см. официальную документацию по установке для вашей ОС).
+- Установлен Git.
+- Установлена IDE (Android Studio, VS Code, IntelliJ IDEA) или возможность запускать команды из терминала.
+- Настроенные эмулятор/симулятор или реальное устройство (Android / iOS).
 
-A few resources to get you started if this is your first Flutter project:
+### Клонирование репозитория
+```
+git clone https://github.com/Drimkaa/TestProjectFlutter.git
+cd TestProjectFlutter
+```
+### Установка зависимостей
+```
+flutter pub get
+```
+### Запуск приложения в режиме разработки (debug)
+```
+flutter run
+```
+Команда автоматически найдёт подключённое устройство или эмулятор и запустит приложение.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Запуск в режиме release (Android)
+```
+flutter run --release
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Или собрать APK:
+```
+flutter build apk --release
+```
+APK будет лежать по пути:
+```
+build/app/outputs/flutter-apk/app-release.apk
+```
+Его можно установить на устройство вручную или через `adb install`.

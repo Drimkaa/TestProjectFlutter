@@ -5,8 +5,7 @@ import '../../../../core/constants/storage_keys.dart';
 class OnboardingStorageService {
   Future<bool> isOnboardingCompleted() async {
     final prefs = await SharedPreferences.getInstance();
-    return false;
-    //return prefs.getBool(StorageKeys.onboardingCompleted) ?? false;
+    return prefs.getBool(StorageKeys.onboardingCompleted) ?? false;
   }
 
   Future<void> setOnboardingCompleted(bool completed) async {

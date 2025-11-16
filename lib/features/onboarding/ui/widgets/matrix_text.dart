@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class AnimatedMatrixText extends StatefulWidget {
-  final List<String> texts;          // Все возможные варианты текста
-  final int currentIndex;            // Индекс текущего отображаемого текста
+  final List<String> texts;
+  final int currentIndex;
   final TextStyle? style;
-  final Duration duration;           // Длительность анимации
+  final Duration duration;
 
   const AnimatedMatrixText({
     Key? key,
@@ -47,7 +47,6 @@ class _AnimatedMatrixTextState extends State<AnimatedMatrixText> {
   }
 
   String _initializeCurrentText(int length) {
-    // Заполняем случайными символами
     return List.generate(length, (_) => _randomChar()).join();
   }
 
@@ -115,7 +114,7 @@ class _AnimatedMatrixTextState extends State<AnimatedMatrixText> {
 
   String _randomChar() {
     return String.fromCharCode(_chars.codeUnitAt(
-        DateTime.now().microsecond % _chars.length)); // Простая генерация
+        DateTime.now().microsecond % _chars.length));
   }
 
   @override

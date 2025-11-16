@@ -23,6 +23,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     _pageController.dispose();
     super.dispose();
   }
+  Future<void> _routeToHomeScreen() async {
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+    );
+  }
 
   Future<void> _finishOnboarding() async {
     final viewModel = context.read<OnboardingViewModel>();
@@ -55,8 +60,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                   ),
                 ),
-
-                // Индикатор страниц (3 точки) по центру
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: SmoothPageIndicator(
@@ -80,8 +83,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                   ),
                 ),
-
-                // Большая желтая кнопка "Следующая" или "Начать"
                 Container(
                   width: double.infinity,
                   height: 70,
@@ -97,7 +98,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ? null
                         : () {
                       if (viewModel.isLastPage) {
-                        _finishOnboarding();
+                        _routeToHomeScreen();
                       } else {
                         _pageController.nextPage(
                           duration: const Duration(milliseconds: 300),
@@ -123,8 +124,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                 ),
-
-                // Текст-ссылка "Пропустить" или "Больше не показывать"
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 16),
                   child: TextButton(
@@ -152,7 +151,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ],
             );
-
           },
         ),
       ),

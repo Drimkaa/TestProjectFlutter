@@ -26,7 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onScroll() {
     final vm = context.read<HomeViewModel>();
-    if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200) {
+    if (_scrollController.position.pixels >=
+        _scrollController.position.maxScrollExtent - 200) {
       if (vm.hasMore && !vm.isLoading) {
         vm.loadMore();
       }
@@ -54,24 +55,34 @@ class _HomeScreenState extends State<HomeScreen> {
           if (vm.products.isEmpty && vm.isLoading) {
             return const Center(child: CircularProgressIndicator());
           }
-
+          if (vm.products.isEmpty && vm.error != null) {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(vm.error!),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () => vm.reset(),
+                    child: const Text('Повторить'),
+                  ),
+                ],
+              ),
+            );
+          }
           return CustomScrollView(
             controller: _scrollController,
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.all(2),
                 sliver: SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                      if (index == vm.products.length) {
-                        // Не сюда, будет в конце через SliverToBoxAdapter
-                        return null;
-                      }
-                      final product = vm.products[index];
-                      return ProductCard(product: product);
-                    },
-                    childCount: vm.products.length,
-                  ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    if (index == vm.products.length) {
+                      return null;
+                    }
+                    final product = vm.products[index];
+                    return ProductCard(product: product);
+                  }, childCount: vm.products.length),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 2,
@@ -80,18 +91,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-
-              // Кружок внизу, на всю ширину
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   child: Center(
-                    child:Center(
-                        child: Center(
-                          child: CircularProgressIndicator(), // или Text('5') по вашему
-                        ),
-
-                      ),
+                    child: Center(
+                      child: Center(child: CircularProgressIndicator()),
+                    ),
                   ),
                 ),
               ),
@@ -102,4 +108,3 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-

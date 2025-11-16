@@ -6,7 +6,6 @@ class OnboardingRepository {
 
   OnboardingRepository(this._storageService);
 
-  /// проверка на пройденность
   Future<bool> hasCompletedOnboarding() async {
     try {
       return await _storageService.isOnboardingCompleted();
@@ -15,7 +14,6 @@ class OnboardingRepository {
     }
   }
 
-  /// пометить onboarding пройденным
   Future<void> completeOnboarding() async {
     try {
       await _storageService.setOnboardingCompleted(true);
