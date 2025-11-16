@@ -1,10 +1,12 @@
 # Тестовое приложение
+## Изображения
 
 <p align="center">
   <img src="assets/screens/screen0.png" alt="Splash screen" width="200" />
   <img src="assets/screens/screen1.png" alt="Onboarding screen" width="200" />
   <img src="assets/screens/screen2.png" alt="Главная страница" width="200" />
 </p>
+
 ## Установка и запуск проекта
 
 ### Предварительные требования
