@@ -45,3 +45,8 @@ APK будет лежать по пути:
 build/app/outputs/flutter-apk/app-release.apk
 ```
 Его можно установить на устройство вручную или через `adb install`.
+
+
+## Скачать APK
+
+Скачать последнюю версию: на странице [Releases](https://github.com/Drimkaa/TestProjectFlutter/releases/tag/1.0.0).
